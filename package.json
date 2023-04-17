@@ -16,7 +16,8 @@
     "@tabler/icons-react": "^2.16.0",
     "dayjs": "^1.11.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
