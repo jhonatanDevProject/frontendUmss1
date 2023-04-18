@@ -11,7 +11,7 @@ export const Jumbotron = ({ title, subtitle }) => {
 				padding: '18px',
 			}}
 		>
-			<Title order={1} style={{ marginBottom: '16px' }}>
+			<Title order={1} style={{ marginBottom: '16px' }} color="blue">
 				{title}
 			</Title>
 			<Divider style={{ marginBottom: '16px' }} />
