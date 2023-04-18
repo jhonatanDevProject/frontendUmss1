@@ -18,7 +18,7 @@ for (let i = 0; i < 2; i++) {
 			employee: faker.helpers.arrayElement(employees),
 			parts: [faker.helpers.arrayElement(['pt01', 'pt02', 'pt03'])],
 			services: [faker.helpers.arrayElement(['sv07', 'sv08', 'sv09'])],
-			complete: Math.random() > 0.49,
+			complete: false,
 		},
 	};
 	data.push(obj);

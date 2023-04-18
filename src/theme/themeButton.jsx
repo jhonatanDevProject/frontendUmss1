@@ -1,7 +1,7 @@
 import { ActionIcon, useMantineColorScheme } from '@mantine/core';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 
-const ThemeButton = () => {
+const ThemeButton = (props) => {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 	const dark = colorScheme === 'dark';
 
@@ -11,6 +11,7 @@ const ThemeButton = () => {
 			color={dark ? 'yellow' : 'blue'}
 			onClick={() => toggleColorScheme()}
 			title="Toggle color scheme"
+			{...props}
 		>
 			{dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
 		</ActionIcon>
