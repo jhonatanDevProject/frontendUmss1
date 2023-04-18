@@ -1,15 +1,26 @@
 import { useState } from 'react';
-import { AppShell, Text, useMantineTheme } from '@mantine/core';
+import {
+	AppShell as BaseAppShell,
+	Text,
+	useMantineTheme,
+	Image,
+	Flex,
+	Anchor,
+	Box,
+} from '@mantine/core';
+import { IconHeartFilled } from '@tabler/icons-react';
 import { Footer, Header, Navbar } from '~/components';
+import { Routes } from '~/routes';
 import Provider from '~/theme/Provider';
+import logo from '~/assets/logo.png';
 
-export default function AppShellDemo() {
+export default function AppShell() {
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
 
 	return (
 		<Provider>
-			<AppShell
+			<BaseAppShell
 				styles={{
 					main: {
 						background:
@@ -20,20 +31,49 @@ export default function AppShellDemo() {
 				}}
 				navbarOffsetBreakpoint="sm"
 				asideOffsetBreakpoint="sm"
-				navbar={
-					<Navbar opened={opened}>
-						<Text>Application navbar</Text>
-					</Navbar>
+				navbar={<Navbar data-testid="navbar" opened={opened ? 1 : 0} />}
+				footer={
+					<Footer data-testid="footer">
+						<Flex gap={6}>
+							<span>Desenvolvido com</span>
+							<IconHeartFilled />
+							por
+							<Anchor
+								href="https://github.com/alant2031"
+								target="_blank"
+								underline={false}
+								weight={700}
+							>
+								{' '}
+								Alan Tanaka
+							</Anchor>
+						</Flex>
+					</Footer>
 				}
-				footer={<Footer>Application footer</Footer>}
 				header={
-					<Header opened={opened} setOpened={setOpened}>
-						<Text>Application header</Text>
+					<Header
+						data-testid="header"
+						opened={opened ? 1 : 0}
+						setOpened={setOpened}
+					>
+						<Image
+							height={40}
+							width={40}
+							fit="fill"
+							radius="md"
+							src={logo}
+							alt="logo"
+						/>
+						<Text fw={700} color="blue" ml={4}>
+							ULTRACAR
+						</Text>
 					</Header>
 				}
 			>
-				<Text>Resize app to see responsive navbar in action</Text>
-			</AppShell>
+				<Box data-testid="content">
+					<Routes />
+				</Box>
+			</BaseAppShell>
 		</Provider>
 	);
 }

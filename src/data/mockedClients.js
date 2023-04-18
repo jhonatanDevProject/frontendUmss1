@@ -4,7 +4,7 @@ const data = [];
 for (let i = 0; i < 10; i++) {
 	const obj = {
 		name: faker.name.fullName(),
-		id: faker.random.numeric(9, { allowLeadingZeros: true }),
+		id: faker.random.numeric(9, { allowLeadingZeros: true }).toString(),
 		location: {
 			state: faker.address.stateAbbr(),
 			place: faker.address.city(),
@@ -19,6 +19,4 @@ for (let i = 0; i < 10; i++) {
 
 	data.push(obj);
 }
-
-console.log(data);
 export default data;
