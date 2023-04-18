@@ -9,9 +9,12 @@ import {
 
 import qrcode from '~/assets/qrcode.png';
 
-export const Card = ({ name, handle }) => {
+export const Card = (props) => {
+	const { name, handle, client_key } = props;
+	console.log(client_key);
 	return (
 		<BaseCard
+			{...props}
 			shadow="sm"
 			padding="lg"
 			radius="md"
@@ -33,6 +36,7 @@ export const Card = ({ name, handle }) => {
 				mt="md"
 				radius="md"
 				onClick={handle}
+				data-testid={`click-${client_key}`}
 			>
 				Ler QR Code
 			</Button>

@@ -81,7 +81,7 @@ const Order = ({ data }) => {
 					{...form.getInputProps('parts')}
 				/>
 				<NativeSelect
-					label="Mecânico responsável pelo serviço"
+					label="Responsável pelo serviço"
 					placeholder="Selecione"
 					data={employees}
 					rightSection={<IconChevronDown size="1rem" />}

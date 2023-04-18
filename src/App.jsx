@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import {
-	AppShell,
+	AppShell as BaseAppShell,
 	Text,
 	useMantineTheme,
 	Image,
 	Flex,
 	Anchor,
+	Box,
 } from '@mantine/core';
 import { IconHeartFilled } from '@tabler/icons-react';
 import { Footer, Header, Navbar } from '~/components';
@@ -13,13 +14,13 @@ import { Routes } from '~/routes';
 import Provider from '~/theme/Provider';
 import logo from '~/assets/logo.png';
 
-export default function AppShellDemo() {
+export default function AppShell() {
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
 
 	return (
 		<Provider>
-			<AppShell
+			<BaseAppShell
 				styles={{
 					main: {
 						background:
@@ -30,9 +31,9 @@ export default function AppShellDemo() {
 				}}
 				navbarOffsetBreakpoint="sm"
 				asideOffsetBreakpoint="sm"
-				navbar={<Navbar opened={opened} />}
+				navbar={<Navbar data-testid="navbar" opened={opened ? 1 : 0} />}
 				footer={
-					<Footer>
+					<Footer data-testid="footer">
 						<Flex gap={6}>
 							<span>Desenvolvido com</span>
 							<IconHeartFilled />
@@ -50,7 +51,11 @@ export default function AppShellDemo() {
 					</Footer>
 				}
 				header={
-					<Header opened={opened} setOpened={setOpened}>
+					<Header
+						data-testid="header"
+						opened={opened ? 1 : 0}
+						setOpened={setOpened}
+					>
 						<Image
 							height={40}
 							width={40}
@@ -65,8 +70,10 @@ export default function AppShellDemo() {
 					</Header>
 				}
 			>
-				<Routes />
-			</AppShell>
+				<Box data-testid="content">
+					<Routes />
+				</Box>
+			</BaseAppShell>
 		</Provider>
 	);
 }

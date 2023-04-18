@@ -1,9 +1,11 @@
 // import {} from 'react';
-import { Paper, Text, Title, Divider, Box } from '@mantine/core';
+import { Paper, Text, Title, Divider } from '@mantine/core';
 
-export const Jumbotron = ({ title, subtitle }) => {
+export const Jumbotron = (props) => {
+	const { title, subtitle } = props;
 	return (
 		<Paper
+			{...props}
 			padding="lg"
 			radius="md"
 			shadow="sm"

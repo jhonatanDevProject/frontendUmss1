@@ -1,17 +1,20 @@
 import { Route, Routes as BaseRoutes } from 'react-router-dom';
-import { Client, Home, All, Employees } from '~/pages';
+import { Client, Home, All, Employees, NotFound } from '~/pages';
 import { Delay } from '~/components';
 
 export const Routes = () => {
-	const DelayClient = Delay(Client, 1200);
-	const DelayAllList = Delay(All, 1200);
-	const DelayEmployees = Delay(Employees, 1200);
+	const DelayHome = Delay(Home, 500);
+	const DelayClient = Delay(Client, 800);
+	const DelayAllList = Delay(All, 800);
+	const DelayEmployees = Delay(Employees, 800);
+	const DelayNotFound = Delay(NotFound, 500);
 	return (
 		<BaseRoutes>
-			<Route path="/" element={<Home />} />
+			<Route path="/" element={<DelayHome />} />
 			<Route path="/client" element={<DelayClient />} />
 			<Route path="/orders" element={<DelayAllList />} />
 			<Route path="/filter_orders" element={<DelayEmployees />} />
+			<Route path="*" element={<DelayNotFound />} />
 		</BaseRoutes>
 	);
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer as BaseFooter } from '@mantine/core';
 
-export const Footer = ({ children }) => {
+export const Footer = (props) => {
 	return (
 		<BaseFooter
 			height={60}
@@ -10,8 +10,9 @@ export const Footer = ({ children }) => {
 				display: 'flex',
 				justifyContent: 'flex-end',
 			}}
+			{...props}
 		>
-			{children}
+			{props.children}
 		</BaseFooter>
 	);
 };
