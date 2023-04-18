@@ -1,9 +1,4 @@
-import {
-	IconUserQuestion,
-	IconList,
-	IconUserCircle,
-	IconHome2,
-} from '@tabler/icons-react';
+import { IconUserQuestion, IconList, IconHome2 } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar as BaseNavbar, NavLink } from '@mantine/core';
 
@@ -27,10 +22,9 @@ export const Navbar = ({ opened }) => {
 				onClick={() => navigate('client')}
 			/>
 			<NavLink label="Lista de serviços" icon={<IconList />}>
-				<NavLink label="Geral" />
+				<NavLink label="Geral" onClick={() => navigate('orders')} />
 				<NavLink label="Colaborador" />
 			</NavLink>
-			<NavLink label="Sobre" icon={<IconUserCircle />} />
 		</BaseNavbar>
 	);
 };

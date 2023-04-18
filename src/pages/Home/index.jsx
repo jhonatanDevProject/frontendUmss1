@@ -1,5 +1,7 @@
 // import {} from 'react';
+import { Button } from '@mantine/core';
 import { Jumbotron } from '~/components';
+// import { useStore } from '~/store';
 export const Home = () => {
 	return (
 		<Jumbotron

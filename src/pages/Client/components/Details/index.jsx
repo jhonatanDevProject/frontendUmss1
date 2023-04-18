@@ -4,10 +4,9 @@ import { Box, Flex, Title, Text } from '@mantine/core';
 import clients from '~/data/mockedClients';
 import Customer from './customer';
 import Order from './order';
-import { Demo } from './Demo';
 
 export const Details = ({ id }) => {
-	const client = clients.find((cli) => cli.id === id);
+	const client = clients.find((c) => c.id === id);
 
 	return (
 		<Box>

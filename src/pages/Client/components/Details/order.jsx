@@ -1,4 +1,4 @@
-// import {} from 'react';
+import { useCallback } from 'react';
 import {
 	Paper,
 	MultiSelect,
@@ -9,12 +9,16 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconChevronDown } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 import { mechanic_services, carParts } from '~/data/mockedServices';
 import employees from '~/data/mockedEmployees';
+import { useStore } from '~/store';
 const Order = ({ data }) => {
+	const navigate = useNavigate();
+	const addOrder = useStore((state) => state.addOrder);
 	const form = useForm({
 		initialValues: {
-			emp: employees[0],
+			employee: employees[0],
 		},
 
 		// functions will be used to validate values at corresponding key
@@ -22,9 +26,26 @@ const Order = ({ data }) => {
 			services: (value) => {
 				return value?.length ? null : 'Selecione um serviço';
 			},
-			emp: (value) => (value === '' ? 'Selecione um mecanico' : null),
+			employee: (value) => (value === '' ? 'Selecione um mecanico' : null),
 		},
 	});
+	const handleSubmit = useCallback(
+		(values) => {
+			const newOrder = {
+				customer: data.name,
+				id: data.id,
+				vehicle: { ...data.vehicle },
+				order: {
+					complete: false,
+					parts: values.parts ? values.parts : [],
+					...values,
+				},
+			};
+			addOrder(newOrder);
+			navigate('/orders');
+		},
+		[form.values],
+	);
 	return (
 		<Paper
 			padding="lg"
@@ -39,7 +60,7 @@ const Order = ({ data }) => {
 		>
 			<Title order={2}>Ordem de serviço</Title>
 			<Divider size={10} />
-			<form onSubmit={form.onSubmit(console.log)}>
+			<form onSubmit={form.onSubmit(handleSubmit)}>
 				<MultiSelect
 					data={mechanic_services}
 					label="Serviços disponíveis na Ultracar"
@@ -61,7 +82,7 @@ const Order = ({ data }) => {
 					data={employees}
 					rightSection={<IconChevronDown size="1rem" />}
 					rightSectionWidth={40}
-					{...form.getInputProps('emp')}
+					{...form.getInputProps('employee')}
 				/>
 				<Button type="submit" mt="sm">
 					Confirmar
