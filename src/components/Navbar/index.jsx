@@ -23,7 +23,10 @@ export const Navbar = ({ opened }) => {
 			/>
 			<NavLink label="Lista de serviços" icon={<IconList />}>
 				<NavLink label="Geral" onClick={() => navigate('orders')} />
-				<NavLink label="Colaborador" />
+				<NavLink
+					label="Colaborador"
+					onClick={() => navigate('filter_orders')}
+				/>
 			</NavLink>
 		</BaseNavbar>
 	);

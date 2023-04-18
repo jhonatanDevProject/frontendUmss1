@@ -7,6 +7,7 @@ import {
 	NativeSelect,
 	Button,
 } from '@mantine/core';
+import { faker } from '@faker-js/faker';
 import { useForm } from '@mantine/form';
 import { IconChevronDown } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
@@ -32,10 +33,13 @@ const Order = ({ data }) => {
 	const handleSubmit = useCallback(
 		(values) => {
 			const newOrder = {
-				customer: data.name,
-				id: data.id,
+				id: faker.random.numeric(6, { allowLeadingZeros: true }).toString(),
+				customer: {
+					name: data.name,
+					id: data.id,
+				},
 				vehicle: { ...data.vehicle },
-				order: {
+				details: {
 					complete: false,
 					parts: values.parts ? values.parts : [],
 					...values,

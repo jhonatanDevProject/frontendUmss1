@@ -1,10 +1,11 @@
 // import {} from 'react'
 import { Paper, Box } from '@mantine/core';
 import { useStore } from '~/store';
+import { Accordion } from '~/components';
 
-export const List = () => {
+export const All = () => {
 	const orders = useStore((state) => state.orders);
-	console.log(orders);
+
 	return (
 		<Box>
 			<Paper
@@ -14,7 +15,9 @@ export const List = () => {
 				sx={{
 					padding: '18px',
 				}}
-			></Paper>
+			>
+				<Accordion orders={orders} />
+			</Paper>
 		</Box>
 	);
 };

@@ -1,24 +1,8 @@
 import { create } from 'zustand';
+import orders from '~/data/mockedOrders';
 
 export const useStore = create((set) => ({
-	orders: [
-		{
-			customer: 'Tony Stark',
-			id: '045789333',
-			vehicle: {
-				make: 'Fiat',
-				model: 'Uno',
-				fuel: 'Alcool',
-				release: 2015,
-			},
-			order: {
-				employee: 'Dave',
-				parts: [],
-				services: ['sv02', 'sv04'],
-				complete: false,
-			},
-		},
-	],
+	orders,
 	addOrder: (order) =>
 		set((state) => {
 			state.orders.push(order);
