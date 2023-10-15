@@ -1,6 +1,10 @@
 import { Route, Routes as BaseRoutes } from 'react-router-dom';
 import { Client, Home, All, Employees, NotFound } from '~/pages';
 import { Delay } from '~/components';
+import AsociacionComitElec from '~/pages/pruevas/AsociacionComitElec ';
+
+
+
 
 export const Routes = () => {
 	const DelayHome = Delay(Home, 500);
@@ -15,6 +19,12 @@ export const Routes = () => {
 			<Route path="/orders" element={<DelayAllList />} />
 			<Route path="/filter_orders" element={<DelayEmployees />} />
 			<Route path="*" element={<DelayNotFound />} />
+
+			<Route
+          exact path="/admin/AsociacionComitElec"
+          element={<AsociacionComitElec />}
+        />
+
 		</BaseRoutes>
 	);
 };
