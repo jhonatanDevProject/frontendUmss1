@@ -2,6 +2,9 @@ import { Route, Routes as BaseRoutes } from 'react-router-dom';
 import { Client, Home, All, Employees, NotFound } from '~/pages';
 import { Delay } from '~/components';
 import AsociacionComitElec from '~/pages/pruevas/AsociacionComitElec ';
+import EditFrente from '~/pages/crud/frentes/editFrente';
+import IngresarFrente from '~/pages/crud/frentes/ingresarFrente';
+import IndexFrente from '~/pages/crud/frentes/indexFrentes';
 
 
 
@@ -23,7 +26,22 @@ export const Routes = () => {
 			<Route
           exact path="/admin/AsociacionComitElec"
           element={<AsociacionComitElec />}
+
         />
+
+<Route
+          path="/admin/indexFrente"
+          element={<IndexFrente />}
+        />
+        <Route
+          path="/admin/IngresarFrente"
+          element={<IngresarFrente />}
+        />
+        <Route
+          exact path="/admin/EditFrente/:id"
+          element={<EditFrente />}
+        />
+
 
 		</BaseRoutes>
 	);

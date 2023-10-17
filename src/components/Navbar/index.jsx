@@ -32,7 +32,17 @@ export const Navbar = (props) => {
 				/>
 				<NavLink
 					data-testid="employee-link"
-					label="Responsável"
+					label="PARTE DE ..."
+					onClick={() => navigate('filter_orders')}
+				/>
+				<NavLink
+					data-testid="employee-link"
+					label="PARTE DE ..."
+					onClick={() => navigate('filter_orders')}
+				/>
+				<NavLink
+					data-testid="employee-link"
+					label="PARTE DE ..."
 					onClick={() => navigate('filter_orders')}
 				/>
 			</NavLink>
